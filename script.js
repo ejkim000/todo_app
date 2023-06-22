@@ -10,6 +10,9 @@ if (todos) {
     todos.forEach(todo => {
         addTodo(todo);
     });
+
+    // same as 
+    // todos.forEach(todo => addTodo(todo));
 }
 
 form.addEventListener("submit", (e) => { // hit enter = submit form
@@ -22,7 +25,7 @@ form.addEventListener("submit", (e) => { // hit enter = submit form
 
 function addTodo(todo) {
     let todoText = input.value;
-
+    
     if (todo) todoText = todo.text;
 
     if (todoText) {
@@ -37,7 +40,7 @@ function addTodo(todo) {
         todoUL.appendChild(todoEL);
         // remove input text after <li> was crated
         input.value = "";
-
+        
         // mouse right click -> remove <li>
         // Dosen't allow remove when dev tool opened && responsive view. why?
         todoEL.addEventListener("contextmenu", (e) => {
@@ -52,8 +55,8 @@ function addTodo(todo) {
             todoEL.classList.toggle("completed");
             updateLS();
         });
-        
-        updateLS(); //here or next line?
+
+        updateLS(); 
     }
 }
 
