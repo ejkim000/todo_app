@@ -6,22 +6,23 @@ const todoUL = document.getElementById("todos");
 const todos = JSON.parse(localStorage.getItem("todos"));
 
 // show todos when todos are saved in my localStorage
-if(todos) {
+if (todos) {
     todos.forEach(todo => {
         addTodo(todo);
     });
 }
 
 form.addEventListener("submit", (e) => { // hit enter = submit form
-    e.preventDefault(); // default action should not be taken as it normally would be
-
+    // default action should not be taken as it normally would be
+    e.preventDefault();
+    // add todo
     addTodo();
 });
 
 
 function addTodo(todo) {
     let todoText = input.value;
-    
+
     if (todo) todoText = todo.text;
 
     if (todoText) {
@@ -34,7 +35,8 @@ function addTodo(todo) {
 
         todoEL.innerText = todoText;
         todoUL.appendChild(todoEL);
-        input.value = ""; // remove input text after <li> was crated
+        // remove input text after <li> was crated
+        input.value = "";
 
         // mouse right click -> remove <li>
         // Dosen't allow remove when dev tool opened && responsive view. why?
@@ -50,6 +52,7 @@ function addTodo(todo) {
             todoEL.classList.toggle("completed");
             updateLS();
         });
+        
         updateLS(); //here or next line?
     }
 }
@@ -67,5 +70,5 @@ function updateLS() {
     });
 
     // localstorage doesn't accept array so change to JSON
-    localStorage.setItem("todos", JSON.stringify(todos)); 
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
